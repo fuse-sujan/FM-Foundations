@@ -24,7 +24,7 @@ header, section, footer {
 
 header {
   background-color: #EEE;
-  height: 10.25em;
+  height: 25vh;
 }
 
 #header-title {
@@ -61,7 +61,7 @@ header {
 
 section {
   background-color: #181818;
-  height: 22.8em;
+  height: 55vh;
 }
 
 #text-content {
@@ -110,7 +110,7 @@ section {
 }
 
 footer {
-  height: 8em;
+  height: 20vh;
   background-color: rgb(150, 0, 0);
 }
 
