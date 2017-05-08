@@ -1,2 +1,2 @@
 # FM-Foundations
-Fusemachines Full Stack JS course files
+Full Stack 101 course in Fusemachines
