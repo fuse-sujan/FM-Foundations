@@ -2,7 +2,7 @@ for(let char = '#'; char.length <= 7; char += '#') {
   console.log(char)
 }
 
-console.log()
+console.log('')
 
 for(let num = 1; num <= 100; num++) {
   let outputString = ''
@@ -11,7 +11,7 @@ for(let num = 1; num <= 100; num++) {
   console.log(outputString || num)
 }
 
-console.log()
+console.log('')
 
 let boardSize = 8
 let outputString = ''
