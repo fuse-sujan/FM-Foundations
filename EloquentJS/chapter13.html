@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chapter 12 - Eloquent JS</title>
+  <style>
+    /* Defines a cleaner look for tables */
+    table  { border-collapse: collapse; }
+    td, th { border: 1px solid black; padding: 3px 8px; }
+    th     { text-align: left; }
+  </style>
+</head>
+<body>
+  <h1>Heading with a <span>span</span> element.</h1>
+  <p>A paragraph with <span>one</span>, <span>two</span>spans.</p>
+  <img src="http://eloquentjavascript.net/img/cat.png" id="cat" style="position: absolute; top: 150px; left: 700px;">
+  <img src="http://eloquentjavascript.net/img/hat.png" id="hat" style="position: absolute;">
+
+</body>
+<script src="http://eloquentjavascript.net/code/mountains.js"></script>
+<script>
+  function buildTable(data) {
+    var table = document.createElement('table');
+    var fields = Object.keys(data[0]);
+
+    var tableRow = document.createElement('tr');
+    fields.forEach(function(field) {
+      var tableHeading = document.createElement('th');
+      tableHeading.textContent = field;
+      tableRow.appendChild(tableHeading);
+    });
+    table.appendChild(tableRow);
+
+    data.forEach(function(obj) {
+      var row = document.createElement('tr');
+      fields.forEach(function(property) {
+        var cell = document.createElement('td');
+        cell.textContent = obj[property];
+        row.appendChild(cell);
+      });
+      table.appendChild(row);
+    });
+    return table;
+  }
+
+  document.body.appendChild(buildTable(MOUNTAINS));
+
+</script>
+<script>
+  function byTagName(node, tagName) {
+    var nodes = [];
+
+    var tagName = tagName.toUpperCase();
+
+    function findNodes(node) {
+      for (var i = 0; i < node.childNodes.length; i++) {
+        var child = node.childNodes[i];
+        if (child.nodeType === document.ELEMENT_NODE && child.nodeName === tagName) {
+          nodes.push(child);
+        }
+        findNodes(child);
+      }
+    }
+    findNodes(node);
+    return nodes;
+  }
+
+  console.log(byTagName(document.body, "h1").length);
+  console.log(byTagName(document.body, "span").length);
+  var para = document.querySelector("p");
+  console.log(byTagName(para, "span").length);
+</script>
+
+<script>
+  var cat = document.querySelector("#cat");
+  var hat = document.querySelector("#hat");
+  
+  var angle = 0, lastTime = null;
+  function animate(time) {
+    if (lastTime != null) {
+      angle += (time - lastTime) * 0.0015;
+    }
+    lastTime = time;
+
+    hat.style.top = (Math.sin(angle) * 150 + 180) + "px";
+    hat.style.left = (Math.cos(angle) * 200 + 700) + "px";
+
+    requestAnimationFrame(animate);
+  }
+  requestAnimationFrame(animate);
+</script>
+</html>
